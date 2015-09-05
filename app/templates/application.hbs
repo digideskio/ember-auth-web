@@ -8,19 +8,32 @@
   <li>{{#link-to 'manager'}}Manager Panel{{/link-to}}</li>
 </ul>
 
-{{#if session.isAuthenticated}}
+&lt;&lt;&lt;<br />
+<p>{{session}}</p>
+<p>{{session.isAuthenticated}}</p>
+<p>{{session.session.authenticator}}</p>
+--- <br />
+
+<p>Scopes.user: {{scopes.isUserAuthenticated}}</p>
+<p>Scopes.admin: {{scopes.isAdminAuthenticated}}</p>
+<p>Scopes.manager: {{scopes.isManagerAuthenticated}}</p>
+
+<br />
+&gt;&gt;&gt;<br />
+
+{{#if scopes.isUserAuthenticated}}
   {{#link-to 'panel.logout'}}User Logout{{/link-to}}
 {{else}}
   {{#link-to 'panel.login'}}User Login{{/link-to}}
 {{/if}}
 
-{{#if session.isAuthenticated}}
+{{#if scopes.isAdminAuthenticated}}
   {{#link-to 'admin.logout'}}Admin Logout{{/link-to}}
 {{else}}
   {{#link-to 'admin.login'}}Admin Login{{/link-to}}
 {{/if}}
 
-{{#if session.isAuthenticated}}
+{{#if scopes.isManagerAuthenticated}}
   {{#link-to 'manager.logout'}}Manager Logout{{/link-to}}
 {{else}}
   {{#link-to 'manager.login'}}Manager Login{{/link-to}}
