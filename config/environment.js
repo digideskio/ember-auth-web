@@ -18,13 +18,27 @@ module.exports = function(environment) {
       // when it is created
     }
   };
+  
+  ENV['simple-auth'] = {
+    authorizer: 'simple-auth-authorizer:devise',
+    store: 'simple-auth-session-store:local-storage'
+  }
 
   if (environment === 'development') {
-    // ENV.APP.LOG_RESOLVER = true;
-    // ENV.APP.LOG_ACTIVE_GENERATION = true;
-    // ENV.APP.LOG_TRANSITIONS = true;
-    // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
-    // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.APP.LOG_RESOLVER = true;
+    ENV.APP.LOG_ACTIVE_GENERATION = true;
+    ENV.APP.LOG_TRANSITIONS = true;
+    ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
+    ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.contentSecurityPolicy = {
+      'default-src': "'none'",
+      'script-src': "'self'",
+      'font-src': "'self' data: fonts.gstatic.com",
+      'connect-src': "'self' http://localhost:4000",
+      'img-src': "'self'",
+      'style-src': "'self' 'unsafe-inline' fonts.googleapis.com",
+      'media-src': "'self'"
+    };
   }
 
   if (environment === 'test') {
