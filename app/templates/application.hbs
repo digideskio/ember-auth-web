@@ -1,9 +1,30 @@
 <h2 id="title">Welcome to Ember</h2>
 
+<h3 id="menu">Menu</h3>
+
+<ul>
+  <li>{{#link-to 'panel'}}User Panel{{/link-to}}</li>
+  <li>{{#link-to 'admin'}}Admin Panel{{/link-to}}</li>
+  <li>{{#link-to 'manager'}}Manager Panel{{/link-to}}</li>
+</ul>
+
 {{#if session.isAuthenticated}}
-  <a {{ action 'invalidateSession' }}>Logout</a>
+  {{#link-to 'panel.logout'}}User Logout{{/link-to}}
 {{else}}
-  <a {{ action 'authenticateSession' }}>Login</a>
+  {{#link-to 'panel.login'}}User Login{{/link-to}}
 {{/if}}
+
+{{#if session.isAuthenticated}}
+  {{#link-to 'admin.logout'}}Admin Logout{{/link-to}}
+{{else}}
+  {{#link-to 'admin.login'}}Admin Login{{/link-to}}
+{{/if}}
+
+{{#if session.isAuthenticated}}
+  {{#link-to 'manager.logout'}}Manager Logout{{/link-to}}
+{{else}}
+  {{#link-to 'manager.login'}}Manager Login{{/link-to}}
+{{/if}}
+
 
 {{outlet}}

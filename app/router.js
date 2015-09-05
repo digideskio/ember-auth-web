@@ -6,10 +6,18 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('login');
-  this.route('logout');
-  this.route('protected');
-  this.route('admin');
+  this.route('panel', function() {
+    this.route('login');
+    this.route('logout');
+  });
+  this.route('admin', function() {
+    this.route('login');
+    this.route('logout');
+  });
+  this.route('manager', function() {
+    this.route('login');
+    this.route('logout');
+  });
 });
 
 export default Router;
