@@ -24,18 +24,18 @@ module.exports = function(environment) {
   }
 
   if (environment === 'development') {
-    ENV.APP.LOG_RESOLVER = true;
-    ENV.APP.LOG_ACTIVE_GENERATION = true;
-    ENV.APP.LOG_TRANSITIONS = true;
-    ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
-    ENV.APP.LOG_VIEW_LOOKUPS = true;
+    // ENV.APP.LOG_RESOLVER = true;
+    // ENV.APP.LOG_ACTIVE_GENERATION = true;
+    // ENV.APP.LOG_TRANSITIONS = true;
+    // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
+    // ENV.APP.LOG_VIEW_LOOKUPS = true;
     ENV.contentSecurityPolicy = {
       'default-src': "'none'",
-      'script-src': "'self'",
-      'font-src': "'self' data: fonts.gstatic.com",
-      'connect-src': "'self' http://localhost:4000",
+      'script-src': "'self' ajax.googleapis.com maxcdn.bootstrapcdn.com http://*.localhost:49154 cdnjs.cloudflare.com",
+      'font-src': "'self' data: fonts.gstatic.com bootswatch.com",
+      'connect-src': "'self' http://localhost:4000 ws://*.localhost:49154",
       'img-src': "'self'",
-      'style-src': "'self' 'unsafe-inline' fonts.googleapis.com",
+      'style-src': "'self' 'unsafe-inline' fonts.googleapis.com bootswatch.com",
       'media-src': "'self'"
     };
   }

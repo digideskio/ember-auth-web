@@ -2,6 +2,10 @@
 import Ember from 'ember';
 import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
 
-const { service } = Ember.inject;
-
-export default Ember.Route.extend(ApplicationRouteMixin);
+export default Ember.Route.extend(ApplicationRouteMixin, {
+  beforeModel() {
+    if (!window.location.hostname.match(/^localhost/)) {
+      Ember.$('head link[href="http://bootswatch.com/flatly/bootstrap.css"]').attr("href", "http://bootswatch.com/cerulean/bootstrap.css");
+    }
+  },
+});
